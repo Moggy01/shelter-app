@@ -13,10 +13,10 @@ function App() {
 <nav className="homePageNav">
         <ul>
           <li>
-            <NavLink to='/provideShelter/ProvideShelterForm'> Provide Shelter</NavLink>
+            <NavLink to='/provideShelter/ProvideShelterForm'>Become a Host</NavLink>
           </li>
           <li>
-          <NavLink to='/requestShelter/RequestShelterResponse'> Request Shelter</NavLink>
+          <NavLink to='/requestShelter/RequestShelterResponse'>Find a Host</NavLink>
           </li>
         </ul>
       </nav>

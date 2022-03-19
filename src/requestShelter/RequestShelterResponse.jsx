@@ -1,11 +1,12 @@
 import React from 'react'
 import _navBarRequestShelter from './_navBarRequestShelter'
-function requestShelterResponse() {
+
+function RequestShelterResponse() {
   return (
-    <div>requestShelterResponse
-      <_navBarRequestShelter/>
+    <div>
+    <_navBarRequestShelter />
     </div>
-  )
+  );
 }
 
-export default requestShelterResponse
+export default RequestShelterResponse
