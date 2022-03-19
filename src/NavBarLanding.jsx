@@ -2,8 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import React from 'react'
 
-export default function NavBarLoading() {
+export default function NavBarLanding() {
   return (
-    <div>NavBarLoading</div>
+    <div>NavBarLanding</div>
   )
 }
