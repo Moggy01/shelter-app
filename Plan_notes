@@ -1,0 +1,20 @@
+Landing Page
+- 3 clickable options (nav bar)
+- search bar for location
+-info about site
+-css
+
+provide shelter
+- form
+- css
+- storage/pull
+- render the data
+- styling per response (card)
+
+search for shelter
+- redered data
+- framer motion for extra infomation
+- css
+- ?filter options
+
+use api to generate location
