@@ -1,6 +1,79 @@
-* {
+/* * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: rgb(201, 177, 147);
   color: rgb(33, 4, 59);
+} */
+
+html {
+  background: url(Ukraine\ Flag.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/* Landing page styling */
+
+h1 {
+  display: flex;
+  color: beige;
+  font-size: 7rem;
+  align-items: center;
+  justify-content: center;
+  font-family: "Bebas Neue";
+  background-color: black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 200px;
+}
+
+.homePageNav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  color: brown;
+  background-color: #0050a6;
+  border-radius: 5px;
+}
+
+.homePageNav li {
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  color: beige;
+}
+
+.homePageNav a {
+  text-decoration: none;
+  font-size: 3rem;
+  color: beige;
+  font-family: "Bebas Neue";
+  margin: 2rem;
+}
+
+#locationInput {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-family: "bebas Neue";
+  font-size: 30px;
+  color: #0050a6;
+}
+
+#location {
+  width: 30%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+#info {
+  text-align: center;
+  align-items: center;
+  color: #0050a6;
+  font-family: "bebas Neue";
 }
