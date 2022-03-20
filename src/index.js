@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import ProvideShelterForm from "./provideShelter/ProvideShelterForm";
+import ProvideShelterForm from "./provideShelter/provideShelterForm";
 import RequestShelterResponse from "./requestShelter/RequestShelterResponse";
 
 ReactDOM.render(
@@ -18,7 +18,7 @@ ReactDOM.render(
         />
         {/* Refugee */}
         <Route
-          path="/requestShelter/RequestShelterResponse"
+          path="./requestShelter/RequestShelterResponse"
           element={<RequestShelterResponse />}
         />
       </Routes>
