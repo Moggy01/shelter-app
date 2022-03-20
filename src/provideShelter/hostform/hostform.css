@@ -1,8 +1,19 @@
 form {
-  background-color: antiquewhite;
+  background-color: #0050a6;
   margin: 50px auto;
   width: 60vw;
   padding: 10px;
+  border-radius: 5px;
+  color: beige;
+  font-family: "Bebas Neue";
+  font-size: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+h2 {
+  text-align: center;
 }
 
 .p-inputtext,
@@ -10,7 +21,6 @@ form {
 .p-multiselect {
   width: 100%;
   margin: 10px 0;
-
 }
 
 #cancelButton {
@@ -19,19 +29,15 @@ form {
   margin-left: 10px;
 }
 
-
 .checkbox-item {
   margin: 10px 0;
 }
-
 
 .checkbox-item span {
   margin: 0 10px;
 }
 
-
 .hostForm span #faintText {
   font-weight: lighter;
   font-size: 3rem;
-
 }
