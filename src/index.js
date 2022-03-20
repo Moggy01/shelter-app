@@ -9,7 +9,7 @@ import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 
 import App from "./App";
-import ProvideShelterForm from "./provideShelter/provideShelterForm";
+import ProvideShelterForm from "./provideShelter/ProvideShelterForm";
 import RequestShelterResponse from "./requestShelter/RequestShelterResponse";
 
 ReactDOM.render(
@@ -24,7 +24,7 @@ ReactDOM.render(
         />
         {/* Refugee */}
         <Route
-          path="./requestShelter/RequestShelterResponse"
+          path="/requestShelter/RequestShelterResponse"
           element={<RequestShelterResponse />}
         />
       </Routes>

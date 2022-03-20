@@ -5,7 +5,7 @@ import _navBarProvideShelter from "./_navBarProvideShelter";
 function provideShelterForm() {
   return (
     <div>
-      provideShelterForm
+      Become a Host
       <_navBarProvideShelter />
       <HostForm />
       hi
