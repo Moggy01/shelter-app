@@ -5,13 +5,13 @@ function _navBarProvideShelter() {
   return (
     <nav className="navbar">
       <ul>
-        <li>
+        <li className='list'>
           <NavLink className={({ isActive }) => (isActive ? 'activelink' : '')} to="/">Home</NavLink>
         </li>
-        <li>
+        <li className='list'>
           <NavLink className={({ isActive }) => (isActive ? 'activelink' : '')} to="/provideShelter/ProvideShelterForm">Become a Host</NavLink>
         </li>
-        <li>
+        <li className='list'>
           <NavLink className={({ isActive }) => (isActive ? 'activelink' : '')} to="/requestShelter/RequestShelterResponse">Find a Host</NavLink>
         </li>
       </ul>  

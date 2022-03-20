@@ -32,7 +32,6 @@ h1 {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  color: brown;
   background-color: #0050a6;
   border-radius: 5px;
 }
@@ -76,4 +75,48 @@ h1 {
   align-items: center;
   color: #0050a6;
   font-family: "bebas Neue";
+}
+
+/* Provide Shelter Form */
+
+#host {
+  text-align: center;
+  font-family: "bebas Neue";
+  color: beige;
+  font-size: 2rem;
+}
+
+/* NavBar */
+
+.navbar ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #0050a6;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.list {
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  color: beige;
+  font-size: 40px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: beige;
+  font-family: "bebas Neue";
+}
+
+.navbar a:hover {
+  color: #fff;
+  transform: scaleY(1);
+  opacity: 1;
+  font-size: 120%;
+  transition-duration: 1s;
 }
