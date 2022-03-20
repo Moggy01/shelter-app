@@ -4,8 +4,8 @@ import _navBarRequestShelter from './_navBarRequestShelter'
 function RequestShelterResponse() {
   return (
     <div>
-      Find a Host
     <_navBarRequestShelter />
+    <h1>Find a safe place to stay</h1>
     </div>
   );
 }
