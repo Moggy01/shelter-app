@@ -1,83 +1,226 @@
-import React from "react";
+import React, { useState } from "react";
 import "../hostform/hostform.css";
 import labelData from "./LabelData";
+import { fetchPlace } from "./FetchPlace";
 
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { RadioButton } from "primereact/radiobutton";
-import { Checkbox } from "primereact/checkbox";
 import { MultiSelect } from "primereact/multiselect";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Button } from "primereact/button";
+import { NavLink } from "react-router-dom";
 
 function HostForm() {
+  // useState for hostform inputs
+  const [title, setTitle] = useState();
+  const [numberOfGuest, setNumberOfGuest] = useState();
+  const [pets, setPets] = useState();
+  const [duration, setDuration] = useState();
+  const [labels, setLabels] = useState([]);
+  const [description, setDescription] = useState();
+  const [whatsapp, setWhatsApp] = useState();
+  const [telegram, setTelegram] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [emailAddress, setEmailAddress] = useState();
+  const [website, setWebsite] = useState();
+
+  // useState for filtering and city API
+  const [city, setCity] = useState([]);
+  const [autocompleteCities, setAutocompleteCities] = useState([]);
+  const [autocompleteErr, setAutocompleteErr] = useState("");
+
+  // Function for fetching city API
+  const handleCityChange = async (e) => {
+    setCity(e.target.value);
+    if (!city) return;
+
+    const res = await fetchPlace(city);
+    !autocompleteCities.includes(e.target.value) &&
+      res.features &&
+      setAutocompleteCities(res.features.map((place) => place.place_name));
+    res.error ? setAutocompleteErr(res.error) : setAutocompleteErr("");
+  };
+
+  // function to submit inputs and store listing in loacal storage
+  const handleSubmit = (e) => {
+    const listing = {
+      title: title,
+      city: city,
+      numberOfGuest: numberOfGuest,
+      pets: pets,
+      duration: duration,
+      labels: labels,
+      description: description,
+      whatsapp: whatsapp,
+      telegram: telegram,
+      phoneNumber: phoneNumber,
+      emailAddress: emailAddress,
+      website: website,
+    };
+
+    // Local storage
+    const listingDB = JSON.parse(localStorage.getItem("Data") || "[]");
+    listingDB.unshift(listing);
+    localStorage.setItem("Data", JSON.stringify(listingDB));
+  };
+
   return (
     <div>
-      <form className="hostForm">
+      {/* Hostform */}
+      <form className="hostForm" onSubmit={handleSubmit}>
+        {/* listing title */}
         <h2>Create a Listing</h2>
-        <label for="listingTitle">Listing title</label>
+        <label htmlFor="listingTitle">Listing title</label>
         <br />
-        <InputText placeholder="Write something descriptive" />
+        <InputText
+          placeholder="Write something descriptive"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
         <br />
-        <label for="yourCity">Your city</label>
+
+        {/* your city */}
+        <label htmlFor="yourCity">Your city</label>
         <br />
-        <InputText placeholder="Start typing your current city" />
+        <div className="placesAutocomplete">
+          <div className="placesAutocomplete__inputWrap">
+            <label htmlFor="city" className="label">
+              {autocompleteErr && (
+                <span className="inputError">{autocompleteErr}</span>
+              )}
+            </label>
+
+            {/* input with city API */}
+            <InputText
+              list="places"
+              type="text"
+              id="city"
+              name="city"
+              onChange={handleCityChange}
+              value={city}
+              required
+              pattern={autocompleteCities.join("|")}
+              autoComplete="off"
+              placeholder="Start typing your current city"
+            />
+            <datalist id="places">
+              {autocompleteCities.map((city, i) => (
+                <option key={i}>{city}</option>
+              ))}
+            </datalist>
+            <span className="placesAutocomplete__hint"></span>
+          </div>
+        </div>
         <br />
-        <label for="numberOfGuest">How many guests can you house?</label>
+
+        {/* No of guest */}
+        <label htmlFor="numberOfGuest">How many guests can you house?</label>
         <br />
         <span id="faintText">
           If you have room for children, specify in the description.
         </span>
         <br />
-        <InputNumber />
+        <InputNumber
+          value={numberOfGuest}
+          onChange={(e) => setNumberOfGuest(e.value)}
+          required
+        />
         <br />
-        <label for="pets">Are pets allowed?</label>
+
+        {/* Pets */}
+        <label htmlFor="pets">Are pets allowed?</label>
         <br />
         <span>You can specify which pets are allowed in the description.</span>
         <br />
         <div>
           <div className="checkbox-item">
-            <RadioButton />
+            <RadioButton
+              inputId="yes"
+              name="Pets"
+              value="Pets Allowed"
+              onChange={(e) => setPets(e.target.value)}
+              checked={pets === "Pets Allowed"}
+              required
+            />
             <span>Yes</span>
           </div>
           <div className="checkbox-item">
-            <RadioButton />
+            <RadioButton
+              inputId="no"
+              name="Pets"
+              value="Pets Not Allowed"
+              onChange={(e) => setPets(e.target.value)}
+              checked={pets === "Pets Not Allowed"}
+              required
+            />
             <span>No</span>
           </div>
         </div>
 
-        <label for="duration">Duration</label>
-
+        {/* duration of stay */}
+        <label htmlFor="duration">Duration</label>
         <div>
           <div className="checkbox-item">
-            <Checkbox />
-            <span>Short-term (1-7 days)</span>
+            <RadioButton
+              inputId="short-term"
+              name="duration"
+              value="Short-term (1-7 days)"
+              onChange={(e) => setDuration(e.target.value)}
+              checked={duration === "Short-term (1-7 days)"}
+              required
+            />
+            <span htmlFor="short-term">Short-term (1-7 days)</span>
           </div>
           <div className="checkbox-item">
-            <Checkbox />
-            <span>Long-term (1 week+)</span>
+            <RadioButton
+              inputId="long-term"
+              name="duration"
+              value="Long-term (1 week+)"
+              onChange={(e) => setDuration(e.target.value)}
+              checked={duration === "Long-term (1 week+)"}
+              required
+            />
+            <span htmlFor="long-term">Long-term (1 week+)</span>
           </div>
           <div className="checkbox-item">
-            <Checkbox />
-            <span>Unsure</span>
+            <RadioButton
+              inputId="unsure"
+              name="duration"
+              value="Unsure"
+              onChange={(e) => setDuration(e.target.value)}
+              checked={duration === "Unsure"}
+              required
+            />
+            <span htmlFor="Unsure">Unsure</span>
           </div>
           <br />
-          <label for="listingTitle">Labels</label>
+
+          {/* Labels */}
+          <label htmlFor="listingTitle">Labels</label>
           <br />
           <MultiSelect
             options={labelData}
             optionLabel="label"
             optionGroupLabel="label"
             optionGroupChildren="items"
+            value={labels}
+            onChange={(e) => setLabels(e.target.value)}
           />
         </div>
 
+        {/* Description */}
         <br />
-        <label for="Description">Description</label>
+        <label htmlFor="Description">Description</label>
         <br />
         <span id="faintText">Enter details about your accommodation.</span>
-        <InputTextarea />
+        <InputTextarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
 
+        {/* contact info */}
         <div className="contactInfo">
           <br />
           <h2>Contact Information</h2>
@@ -85,33 +228,61 @@ function HostForm() {
           <span id="faintText">Remember to include your country code</span>
           <br />
           <br />
-          <label for="whatsapp">WhatsApp</label>
+          <label htmlFor="whatsapp">WhatsApp</label>
           <br />
-          <InputText placeholder="Optional" />
+          <InputText
+            placeholder="Optional"
+            value={whatsapp}
+            onChange={(e) => setWhatsApp(e.target.value)}
+          />
+
           <br />
           <label for="telegram">Telegram</label>
           <br />
-          <InputText placeholder="Optional" />
+          <InputText
+            placeholder="Optional"
+            value={telegram}
+            onChange={(e) => setTelegram(e.target.value)}
+          />
           <br />
-          <label for="phoneNumber">Phone Number</label>
+
+          <label htmlFor="phoneNumber">Phone Number</label>
           <br />
-          <InputText placeholder="Optional" />
+          <InputText
+            placeholder="Optional"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
           <br />
-          <label for="emailAddress">Email Address</label>
+
+          <label htmlFor="emailAddress">Email Address</label>
           <br />
-          <InputText placeholder="Optional" />
+          <InputText
+            placeholder="Optional"
+            value={emailAddress}
+            onChange={(e) => setEmailAddress(e.target.value)}
+          />
+
           <br />
-          <label for="website">Website</label>
+          <label htmlFor="website">Website</label>
           <br />
-          <InputText placeholder="Optional" />
+          <InputText
+            placeholder="Optional"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
         </div>
-        {/* <Button>Create</Button> */}
-        <Button label="Save" icon="pi pi-check" iconPos="left" />
-        <Button
-          label="Cancel"
-          className="p-button-secondary"
-          id="cancelButton"
-        />
+
+        {/* Create and cancel */}
+        <Button label="Create" />
+
+        <NavLink to="/provideShelter/ProvideShelterForm">
+          <Button
+            label="Cancel"
+            className="p-button-secondary"
+            id="cancelButton"
+          />
+        </NavLink>
       </form>
     </div>
   );

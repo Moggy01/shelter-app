@@ -9,7 +9,7 @@ import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
 
 import App from "./App";
-import ProvideShelterForm from "./provideShelter/ProvideShelterForm";
+import ProvideShelterForm from "./provideShelter/provideShelterForm";
 import RequestShelterResponse from "./requestShelter/RequestShelterResponse";
 
 ReactDOM.render(

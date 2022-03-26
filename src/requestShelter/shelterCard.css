@@ -1,0 +1,24 @@
+.shelterCard {
+  width: 60vw;
+  margin: 50px auto;
+  padding: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: aliceblue;
+}
+
+h3 {
+  margin: 0;
+}
+
+dt {
+  margin-bottom: 10px;
+}
+
+.shelterDetails span {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: lightgrey;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+}

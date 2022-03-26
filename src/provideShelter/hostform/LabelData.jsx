@@ -1,3 +1,5 @@
+// label data for the hostform
+
 const labelData = [
   {
     label: "URGENT OFFERS",

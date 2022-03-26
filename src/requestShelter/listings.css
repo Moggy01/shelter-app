@@ -1,0 +1,43 @@
+form {
+  margin: 50px auto;
+  width: 60vw;
+  padding: 10px;
+
+}
+
+.p-inputtext,
+.p-inputnumber,
+.p-multiselect {
+  width: 100%;
+  margin: 10px 0;
+
+}
+
+#cancelButton {
+  background-color: white;
+  color: black;
+  margin-left: 10px;
+}
+
+.checkbox-item {
+  margin: 10px 0;
+}
+
+
+.checkbox-item span {
+  margin: 0 10px;
+}
+
+.faintText {
+  font-weight: lighter;
+}
+
+.hostForm span #faintText {
+  font-weight: lighter;
+  font-size: 3rem;
+
+}
+
+/* .listings {
+  background-color: white;
+} */
