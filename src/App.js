@@ -22,9 +22,11 @@ function App() {
         </ul>
       </nav>
       <div id="locationInput">
-        <label id="locationLabel">Where do you need shelter: </label>
+        <p id='where'>Where do you need shelter? </p>
         {/* <input type={'text'} placeholder='Start typing your nearest town/city'id='location'></input> */}
-        <HomePageSearch />
+      </div>
+      <div id='HomepageSearch'>
+      <HomePageSearch />
       </div>
       <div id="info">
         <h2>What is Ukraine Shelter?</h2>

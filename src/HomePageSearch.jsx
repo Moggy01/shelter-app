@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { fetchPlace } from "../src/provideShelter/hostform/FetchPlace";
 import { InputText } from "primereact/inputtext";
 import { NavLink } from "react-router-dom";
+import './index.css'
 
 // import "../host form/hostform.css";
 import { Button } from "primereact/button";
@@ -39,7 +40,7 @@ const HomePageSearch = () => {
             )}
           </label>
 
-          <InputText
+          <InputText id='InputText'
             list="places"
             type="text"
             id="city"
@@ -59,7 +60,7 @@ const HomePageSearch = () => {
           <span className="placesAutocomplete__hint"></span>
         </div>
         <NavLink to="/requestShelter/RequestShelterResponse">
-          <Button label="Search" onClick={handleSubmit} />
+          <Button label="Search" id='SearchButton' onClick={handleSubmit} />
         </NavLink>
       </div>
     </form>

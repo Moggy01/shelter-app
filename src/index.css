@@ -13,7 +13,12 @@ html {
   background-size: cover;
 }
 /* Landing page styling */
-
+#where {
+  color: beige;
+}
+#SearchButton {
+  margin-left: 350px;
+}
 h1 {
   display: flex;
   color: beige;
