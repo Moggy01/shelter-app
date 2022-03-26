@@ -68,7 +68,7 @@ function HostForm() {
   return (
     <div>
       {/* Hostform */}
-      <form className="hostForm" onSubmit={handleSubmit}>
+      <form className="hostForm">
         {/* listing title */}
         <h2>Create a Listing</h2>
         <label htmlFor="listingTitle">Listing title</label>
@@ -274,7 +274,9 @@ function HostForm() {
         </div>
 
         {/* Create and cancel */}
-        <Button label="Create" />
+        <NavLink to="/requestShelter/RequestShelterResponse">
+          <Button label="Create" onClick={handleSubmit} />
+        </NavLink>
 
         <NavLink to="/provideShelter/ProvideShelterForm">
           <Button
