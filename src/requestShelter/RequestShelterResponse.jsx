@@ -7,7 +7,9 @@ import Entry from "./Entry";
 import "./listings.css";
 
 function RequestShelterResponse() {
-  const [city, setCity] = useState([]);
+  const searchCity = JSON.parse(localStorage.getItem("searchCityData") || "[]");
+
+  const [city, setCity] = useState([searchCity]);
   const [autocompleteCities, setAutocompleteCities] = useState([]);
   const [autocompleteErr, setAutocompleteErr] = useState("");
 
